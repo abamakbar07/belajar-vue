@@ -25,7 +25,7 @@
       </li>
     </ul>
   </span>
-  <Modal :modalData="modal" :text="modal.text" />
+  <Modal :modalData="modal" :text="modal.text" isActive="active" />
 </template>
 
 <script>

@@ -1,8 +1,12 @@
 <template>
   <div class="backdrop">
-    <div class="modal">
+    <div
+      @click="getData"
+      class="modal"
+      :class="{ active: isActive === 'active' }"
+    >
       <h1>{{ modalData.title }}</h1>
-      <p>{{ text }}</p>
+      <p>{{ modalData.text }}</p>
     </div>
   </div>
 </template>
@@ -10,12 +14,12 @@
 <script>
 export default {
   name: "Modal",
-  props: ["modalData", "text"]
-  // methods: {
-  //   getData() {
-  //     console.log(this.modalData);
-  //   }
-  // }
+  props: ["modalData", "isActive"],
+  methods: {
+    getData() {
+      console.log(this.isActive);
+    }
+  }
 };
 </script>
 
@@ -37,5 +41,12 @@ export default {
 }
 .modal h1 {
   color: blue;
+}
+.modal.active h1 {
+  color: white;
+}
+.modal.active {
+  background: blueviolet;
+  color: white;
 }
 </style>
