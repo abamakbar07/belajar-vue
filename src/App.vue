@@ -30,13 +30,15 @@
       </li>
     </ul>
   </span>
+
   <div v-if="isModal">
-    <Modal
-      :modalData="modal"
-      :text="modal.text"
-      isActive="active"
-      @close="togleModal"
-    />
+    <Modal isActive="active" @close="togleModal">
+      <template v-slot:button>
+        <button @click="togleModal">Touch me</button>
+      </template>
+      <h1>{{ modal.title }}</h1>
+      <p>{{ modal.text }}</p>
+    </Modal>
   </div>
 </template>
 

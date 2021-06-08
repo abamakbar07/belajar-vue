@@ -1,8 +1,10 @@
 <template>
   <div class="backdrop" @click.self="close">
     <div class="modal" :class="{ active: isActive === 'active' }">
-      <h1>{{ modalData.title }}</h1>
-      <p>{{ modalData.text }}</p>
+      <slot></slot>
+      <div class="spesificTemplate">
+        <slot name="button"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -10,7 +12,7 @@
 <script>
 export default {
   name: "Modal",
-  props: ["modalData", "isActive"],
+  props: ["isActive"],
   methods: {
     close() {
       this.$emit("close");
