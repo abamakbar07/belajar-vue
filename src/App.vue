@@ -31,7 +31,7 @@
     </ul>
   </span>
 
-  <div v-if="isModal">
+  <teleport to="#modals" v-if="isModal">
     <Modal isActive="active" @close="togleModal">
       <template v-slot:button>
         <button @click="togleModal">Touch me</button>
@@ -39,7 +39,7 @@
       <h1>{{ modal.title }}</h1>
       <p>{{ modal.text }}</p>
     </Modal>
-  </div>
+  </teleport>
 </template>
 
 <script>
