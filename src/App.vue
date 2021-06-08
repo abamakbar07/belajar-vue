@@ -4,6 +4,11 @@
     <button @click="page++">incress page</button>
     <button @click="page--">decress page</button>
     <button @click="togleBook">Hide book</button>
+  </div>
+  <div>
+    <button @click="togleModal">Show Modal</button>
+  </div>
+  <div>
     <button @click="togleFilterFav">Filter Fav</button>:
     {{ filter ? "Favorite book" : "All" }}
   </div>
@@ -25,7 +30,14 @@
       </li>
     </ul>
   </span>
-  <Modal :modalData="modal" :text="modal.text" isActive="active" />
+  <div v-if="isModal">
+    <Modal
+      :modalData="modal"
+      :text="modal.text"
+      isActive="active"
+      @close="togleModal"
+    />
+  </div>
 </template>
 
 <script>
@@ -66,10 +78,14 @@ export default {
       modal: {
         title: "This is a Modal",
         text: "Ini adalah sebagian text dari isi data"
-      }
+      },
+      isModal: false
     };
   },
   methods: {
+    togleModal() {
+      this.isModal = !this.isModal;
+    },
     reverseHandling() {
       this.page++;
     },

@@ -1,10 +1,6 @@
 <template>
-  <div class="backdrop">
-    <div
-      @click="getData"
-      class="modal"
-      :class="{ active: isActive === 'active' }"
-    >
+  <div class="backdrop" @click="close">
+    <div class="modal" :class="{ active: isActive === 'active' }">
       <h1>{{ modalData.title }}</h1>
       <p>{{ modalData.text }}</p>
     </div>
@@ -16,8 +12,8 @@ export default {
   name: "Modal",
   props: ["modalData", "isActive"],
   methods: {
-    getData() {
-      console.log(this.isActive);
+    close() {
+      this.$emit("close");
     }
   }
 };
